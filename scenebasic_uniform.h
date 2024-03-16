@@ -12,21 +12,23 @@
 #include "glm/glm.hpp"
 #include "helper/plane.h"
 #include "helper/objmesh.h"
+#include "helper/skybox.h"
 
 class SceneBasic_Uniform : public Scene
 {
 private:
     float tPrev;
     float angle;
+    float Ytranslation;
 
     Plane plane;
     Torus rockRing, lavaPool;
     std::unique_ptr<ObjMesh> mesh;
-
     GLuint Rock, Lava;
+    SkyBox Sky;
 
-    GLSLProgram prog;
-    void setMatrices();
+    GLSLProgram prog, skyProg;
+    void setMatrices(GLSLProgram &p);
     void compile();
 
 public:

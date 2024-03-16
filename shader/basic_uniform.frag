@@ -4,16 +4,16 @@ in vec3 Position;
 in vec3 Normal;
 in vec2 TexCoord;
 
-layout(binding=0) uniform sampler2D PrimaryTex;
-layout(binding=1) uniform sampler2D SecondaryTex;
+layout(binding=1) uniform sampler2D PrimaryTex;
+layout(binding=2) uniform sampler2D SecondaryTex;
 
 layout (location = 0) out vec4 FragColor;
 
 uniform struct SpotLightInfo {
+	vec3 Position; //light position
 	vec3 La; // ambient
 	vec3 L; // intensity
 	vec3 Direction; // direction
-	vec3 Position; //light position
 	float Exponent; // exponent
 	float Cutoff;	// cutoff
 } Spot;
@@ -122,9 +122,9 @@ void main() {
 	vec3 shadeColor = vec3(0.0);
 	for(int i=0;i<3;i++)
 	{
-		shadeColor+=phongAmbient(i,Position,Normal);	
-	}	
-	shadeColor+=phongSpot(Position,Normal);
+		shadeColor+=phongAmbient(i,Position,normalize(Normal));	
+	}	 
+	shadeColor+=phongSpot(Position,normalize(Normal));
 
 	vec3 Color=mix(Fog.Color,shadeColor,fogFactor);
 	FragColor = vec4(Color, 1.0);

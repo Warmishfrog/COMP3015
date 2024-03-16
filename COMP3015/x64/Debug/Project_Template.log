@@ -1,3 +1,4 @@
 ﻿  scenebasic_uniform.cpp
 C:\Users\Public\OpenGL\Project_Template\COMP3015 30PCNT\scenebasic_uniform.cpp(26,14): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Public\OpenGL\Project_Template\COMP3015 30PCNT\scenebasic_uniform.cpp(121,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   Project_Template.vcxproj -> C:\Users\Public\OpenGL\Project_Template\COMP3015 30PCNT\x64\Debug\COMP3015.exe
