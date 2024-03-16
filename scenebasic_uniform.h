@@ -20,7 +20,7 @@ private:
     float angle;
 
     Plane plane;
-    Torus torus;
+    Torus rockRing, lavaPool;
     std::unique_ptr<ObjMesh> mesh;
 
     GLuint Rock, Lava;

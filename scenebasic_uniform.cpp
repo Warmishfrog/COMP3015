@@ -22,7 +22,8 @@ using glm::mat4;
 SceneBasic_Uniform::SceneBasic_Uniform() :
 	tPrev(0.0f),
 	angle(0),
-	torus(2.5f * 2.0f, 0.3f * 2.0f, 50, 10), //(float MajorRadius, float MinorRadius, int numMajor, int numMinor)
+	rockRing(2.5f * 2.0f, 0.4f * 2.0f, 50, 10), //(float MajorRadius, float MinorRadius, int numMajor, int numMinor)
+	lavaPool(0.2* 2.0f, 0.5f* 2.0f, 50, 10),
 	plane(50.0f, 50.0f, 1, 1) //(float xsize, float zsize, int xdivs, int zdivs)
 {
 	mesh = ObjMesh::load("media/Skeleton/Skelly.obj", true); //load custom model here
@@ -34,9 +35,9 @@ void SceneBasic_Uniform::initScene()
 	glEnable(GL_DEPTH_TEST);
 	model = mat4(1.0f);
 	view = glm::lookAt(
-		vec3(3.0f, 3.0f, 4.0f),
-		vec3(0.0f, 0.75f, 0.0f),
-		vec3(0.0f, 1.0f, 0.0f));
+		vec3(3.0f, 3.0f, 4.0f), //camera position
+		vec3(0.0f, 0.75f, 0.0f), //position of target
+		vec3(0.0f, 1.0f, 0.0f)); //up vector
 	projection = mat4(1.0f);
 
 	GLuint Rock = Texture::loadTexture("media/texture/cement.jpg");
@@ -70,13 +71,13 @@ void SceneBasic_Uniform::initScene()
 		//spotlight
 		prog.setUniform("Spot.L", vec3(0.9f));
 		prog.setUniform("Spot.La", vec3(0.5f));
-		prog.setUniform("Spot.Exponent", 50.0f);
-		prog.setUniform("Spot.Cutoff", glm::radians(15.0f));
+		prog.setUniform("Spot.Exponent", 10.0f);
+		prog.setUniform("Spot.Cutoff", glm::radians(5.0f));
 
 	//The Fog is coming
 		prog.setUniform("Fog.MaxDist", 10.0f);
 		prog.setUniform("Fog.MinDist", 1.0f);
-		prog.setUniform("Fog.Color", vec3(0.6f, 0.6f, 0.6f)); //RGB
+		prog.setUniform("Fog.Color", vec3(0.2f, 0.2f, 0.2f)); //RGB higher is brighter
 		
 }
 
@@ -96,11 +97,13 @@ void SceneBasic_Uniform::compile()
 void SceneBasic_Uniform::update( float t )
 {
 	//spin
+	
 	float deltaT = t - tPrev;
 	if (tPrev == 0.0f) deltaT = 0.0f;
 	tPrev = t;
 	angle += 0.25f * deltaT;
 	if (angle > glm::two_pi<float>()) angle -= glm::two_pi<float>();
+	/**/
 }
 
 void SceneBasic_Uniform::render()
@@ -120,6 +123,7 @@ void SceneBasic_Uniform::render()
 		prog.setUniform("Material.Ka", vec3(0.7f, 0.7f, 0.7f));
 		prog.setUniform("Material.Ks", vec3(0.9f, 0.9f, 0.9f));
 		prog.setUniform("Material.Shininess", 180.0f);
+		prog.setUniform("Material.TexDetail", 2);
 
 		model = mat4(1.0f);
 		model = glm::translate(model, vec3(0.0f, -0.45f, 0.0f));
@@ -131,6 +135,7 @@ void SceneBasic_Uniform::render()
 		prog.setUniform("Material.Ka", vec3(0.9f, 0.5f, 0.2f) * 0.1f);
 		prog.setUniform("Material.Ks", vec3(0.95f, 0.95f, 0.95f));
 		prog.setUniform("Material.Shininess", 100.0f);
+		prog.setUniform("Material.TexDetail", 0);
 
 		model = mat4(1.0f);
 		model = glm::rotate(model, glm::radians(45.0f), vec3(0.0f, 1.0f, 0.0f));
@@ -139,17 +144,30 @@ void SceneBasic_Uniform::render()
 		setMatrices();
 		mesh->render();
 
-	// Render the torus
+	// Render the rock ring
 		prog.setUniform("Material.Kd", vec3(0.9f, 0.9f, 0.9f));
 		prog.setUniform("Material.Ka", vec3(0.5f, 0.5f, 0.5f));
 		prog.setUniform("Material.Ks", vec3(0.1f, 0.1f, 0.1f));
 		prog.setUniform("Material.Shininess", 010.0f);
+		prog.setUniform("Material.TexDetail", 2);
 
 		model = mat4(1.0f);
 		model = glm::rotate(model, glm::radians(90.0f), vec3(1.0f, 0.0f, 0.0f));
 		setMatrices();
-		torus.render();
+		rockRing.render();
 
+	// Render the lava pool
+		prog.setUniform("Material.Kd", vec3(0.9f, 0.9f, 0.9f));
+		prog.setUniform("Material.Ka", vec3(0.9f, 0.9f, 0.9f));
+		prog.setUniform("Material.Ks", vec3(0.9f, 0.9f, 0.9f));
+		prog.setUniform("Material.Shininess", 200.0f);
+		prog.setUniform("Material.TexDetail", 3);
+
+		model = mat4(1.0f);
+		model = glm::rotate(model, glm::radians(90.0f), vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, vec3(4.0f, 4.0f, 0.5f));
+		setMatrices();
+		lavaPool.render();
 }
 
 void SceneBasic_Uniform::resize(int w, int h)

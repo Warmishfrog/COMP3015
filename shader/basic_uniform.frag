@@ -4,16 +4,16 @@ in vec3 Position;
 in vec3 Normal;
 in vec2 TexCoord;
 
-layout(binding=0) uniform sampler2D RockTex;
-layout(binding=1) uniform sampler2D LavaTex;
+layout(binding=0) uniform sampler2D PrimaryTex;
+layout(binding=1) uniform sampler2D SecondaryTex;
 
 layout (location = 0) out vec4 FragColor;
 
 uniform struct SpotLightInfo {
-	vec4 Position; //light position
 	vec3 La; // ambient
 	vec3 L; // intensity
 	vec3 Direction; // direction
+	vec3 Position; //light position
 	float Exponent; // exponent
 	float Cutoff;	// cutoff
 } Spot;
@@ -29,6 +29,7 @@ uniform struct MaterialInfo {
 	vec3 Kd; //material diffuse
 	vec3 Ks; //material specular
 	float Shininess;
+	int TexDetail;
 } Material;
 
 uniform struct FogInfo 
@@ -38,7 +39,7 @@ uniform struct FogInfo
 	vec3 Color; // Colour of course 
 } Fog;
 
-const int levels=3; //shader levels for toon shading
+const int levels=4; //shader levels for toon shading
 const float scaleFactor=1.0/float(levels); //scale factor for toon shading
 
 //SpotLight shader
@@ -65,7 +66,6 @@ vec3 phongSpot( vec3 position, vec3 n){
 		}
 	}
 	return ambient+spotScale*(diffuse+spec)*Spot.L;
-
 }
 
 //Shading
@@ -73,19 +73,36 @@ vec3 phongAmbient(int light, vec3 position, vec3 n){
 	//define diffuse, spec, ambient
 	vec3 diffuse = vec3(0.0), spec = vec3(0.0);
 
-	
-	//vec4 RockTexColor = texture(RockTex, TexCoord);
-	//vec4 LavaTexColor = texture(LavaTex, TexCoord);
-	//vec3 texColor = mix(RockTexColor.rgb, LavaTexColor.rgb, LavaTexColor.a);
+	vec3 MatColor;
+	//choose the texture
+	switch (Material.TexDetail)
+	{
+		case 0:
+			MatColor = Material.Ka;
+			break;
+		case 1:
+			vec4 PrimaryTexColor = texture(PrimaryTex, TexCoord);
+			MatColor = PrimaryTexColor.rgb;
+			break;
+		case 2:
+			PrimaryTexColor = texture(PrimaryTex, TexCoord);
+			vec4 SecondaryTexColor = texture(SecondaryTex, TexCoord);
+			MatColor = mix(PrimaryTexColor.rgb, SecondaryTexColor.rgb, SecondaryTexColor.a);
+			break;
+		case 3:
+			SecondaryTexColor = texture(SecondaryTex, TexCoord);
+			MatColor = SecondaryTexColor.rgb;
+			break;
+	}
 
-	vec3 ambient=lights[light].La*Material.Ka;
-
+	//calculate the ambient
+	vec3 ambient=lights[light].La*MatColor;
 	//calculate the light direction
     vec3 s=normalize(vec3(lights[light].Position.xyz) - position);
 	//calculate the diffuse and specular
     float sDotN=max(dot(s,n),0.0);
 	//calculate the diffuse using toon shading
-	diffuse=Material.Kd*floor(sDotN*levels)*scaleFactor;
+	diffuse=MatColor*floor(sDotN*levels)*scaleFactor;
 
 	if(sDotN>0.0){
 		vec3 v=normalize(-position.xyz);
