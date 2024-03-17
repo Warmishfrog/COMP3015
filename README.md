@@ -11,3 +11,4 @@
  In terms of construction. I've used toruses of different sizes to create the lava pool then a multilight system to create the emerging lava and finally a rotating spotlight to simulate moving lava. As well as the sin() wave on the Y translation of the skeleton model to simulate bobbing up and down
 
  Youtube link: https://youtu.be/-c49ieFuNBU
+ Model used: https://www.turbosquid.com/3d-models/3d-model-lowpolyskeletonrigged-1970201
