@@ -10,5 +10,7 @@
 
  In terms of construction. I've used toruses of different sizes to create the lava pool then a multilight system to create the emerging lava and finally a rotating spotlight to simulate moving lava. As well as the sin() wave on the Y translation of the skeleton model to simulate bobbing up and down
 
+I've used custom skeleton mesh, called Skelly.obj. I've used BlinnPhong ambient shader lighting multiple times for multilight as well as a blinnphong spot shader light that is animated to rotate. I've also used a texture as well as texture mixing and alpha to decorate the scene using cement.jpg and fire.png. I've used fog and toon shading to improve the visual look of the scene. And finally i've incorporated a skybox using the templates HDRpisa although it's obscured by the fog
+
  Youtube link: https://youtu.be/-c49ieFuNBU
  Model used: https://www.turbosquid.com/3d-models/3d-model-lowpolyskeletonrigged-1970201
