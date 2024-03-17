@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Public\\OpenGL\\Project_Template\\COMP3015 30PCNT\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2424A6AC-480B-441A-94EA-86C5C10C6ABF}|Project_Template.vcxproj|C:\\Users\\Public\\OpenGL\\Project_Template\\COMP3015 30PCNT\\shader\\basic_uniform.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{2424A6AC-480B-441A-94EA-86C5C10C6ABF}|Project_Template.vcxproj|solutionrelative:shader\\basic_uniform.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2424A6AC-480B-441A-94EA-86C5C10C6ABF}|Project_Template.vcxproj|C:\\Users\\Public\\OpenGL\\Project_Template\\COMP3015 30PCNT\\scenebasic_uniform.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{2424A6AC-480B-441A-94EA-86C5C10C6ABF}|Project_Template.vcxproj|solutionrelative:scenebasic_uniform.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2424A6AC-480B-441A-94EA-86C5C10C6ABF}|Project_Template.vcxproj|C:\\Users\\Public\\OpenGL\\Project_Template\\COMP3015 30PCNT\\scenebasic_uniform.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{2424A6AC-480B-441A-94EA-86C5C10C6ABF}|Project_Template.vcxproj|solutionrelative:scenebasic_uniform.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2424A6AC-480B-441A-94EA-86C5C10C6ABF}|Project_Template.vcxproj|C:\\Users\\Public\\OpenGL\\Project_Template\\COMP3015 30PCNT\\shader\\basic_uniform.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{2424A6AC-480B-441A-94EA-86C5C10C6ABF}|Project_Template.vcxproj|solutionrelative:shader\\basic_uniform.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2424A6AC-480B-441A-94EA-86C5C10C6ABF}|Project_Template.vcxproj|C:\\Users\\Public\\OpenGL\\Project_Template\\COMP3015 30PCNT\\shader\\skybox.vert||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
@@ -46,12 +46,11 @@
               "RelativeToolTip": "shader\\skybox.vert",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAALAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-16T19:33:54.607Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-16T19:33:54.607Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "basic_uniform.frag",
               "DocumentMoniker": "C:\\Users\\Public\\OpenGL\\Project_Template\\COMP3015 30PCNT\\shader\\basic_uniform.frag",
               "RelativeDocumentMoniker": "shader\\basic_uniform.frag",
@@ -59,8 +58,7 @@
               "RelativeToolTip": "shader\\basic_uniform.frag",
               "ViewState": "AQIAAGsAAAAAAAAAAAAAAHwAAAA6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-15T15:09:26.617Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-15T15:09:26.617Z"
             },
             {
               "$type": "Document",
@@ -72,12 +70,11 @@
               "RelativeToolTip": "shader\\basic_uniform.vert",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-15T15:09:26.742Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-15T15:09:26.742Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "scenebasic_uniform.h",
               "DocumentMoniker": "C:\\Users\\Public\\OpenGL\\Project_Template\\COMP3015 30PCNT\\scenebasic_uniform.h",
               "RelativeDocumentMoniker": "scenebasic_uniform.h",
@@ -90,13 +87,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "scenebasic_uniform.cpp",
               "DocumentMoniker": "C:\\Users\\Public\\OpenGL\\Project_Template\\COMP3015 30PCNT\\scenebasic_uniform.cpp",
               "RelativeDocumentMoniker": "scenebasic_uniform.cpp",
               "ToolTip": "C:\\Users\\Public\\OpenGL\\Project_Template\\COMP3015 30PCNT\\scenebasic_uniform.cpp",
               "RelativeToolTip": "scenebasic_uniform.cpp",
-              "ViewState": "AQIAAMMAAAAAAAAAAAAAACsAAABJAAAA",
+              "ViewState": "AQIAAH4AAAAAAAAAAAAAAI0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-15T15:09:26.82Z",
               "EditorCaption": ""
@@ -111,8 +108,7 @@
               "RelativeToolTip": "shader\\skybox.frag",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-16T19:33:47.06Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-16T19:33:47.06Z"
             }
           ]
         }

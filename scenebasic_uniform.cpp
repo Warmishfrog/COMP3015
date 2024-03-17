@@ -118,7 +118,7 @@ void SceneBasic_Uniform::update( float t )
 	angle += 2.0f * deltaT;
 	if (angle > glm::two_pi<float>()) angle -= glm::two_pi<float>();
 	/**/
-	Ytranslation = (sin(0.8*t) * 0.2f)-3.2f;
+	Ytranslation = (sin(0.8*t) * 0.2f);
 }
 
 void SceneBasic_Uniform::render()
@@ -127,9 +127,9 @@ void SceneBasic_Uniform::render()
 
 		
 	// Render the skybox
-		//skyProg.use();
+		//skyProg.use(); //this breaks everything 
 		model = mat4(1.0f);
-		setMatrices(skyProg);
+		setMatrices(prog);
 		Sky.render();
 		/**/
 	
@@ -151,8 +151,8 @@ void SceneBasic_Uniform::render()
 		model = glm::rotate(model, glm::radians(-45.0f), vec3(1.0f, 0.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(45.0f), vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(20.0f), vec3(0.0f, 0.0f, 1.0f));
-		model = glm::translate(model, vec3(0.0f, Ytranslation, 0.0f));
-		model = glm::scale(model, vec3(5.0f));
+		model = glm::translate(model, vec3(0.0f, Ytranslation-5.0f, 0.0f));
+		model = glm::scale(model, vec3(10.0f));
 		setMatrices(prog);
 		mesh->render();
 
